@@ -54,31 +54,10 @@ Only five steps to use the FastestVideoTrimmer:
 4. implement OnTrimVideoListener, OnCropVideoListener on your working Activity and implement all methods
 
 
-		
-		
-  	  @Override
-   	 public void onVideoPrepared() {
-   	 }
 
-   	 @Override
-    	public void onTrimStarted() {
-        }
 
-   	 @Override
-   	 public void getResult(final Uri uri) {
-    	}
 
-    	@Override
-   	 public void cancelAction() {
-    	}
 
-    	@Override
-    	public void onError(final String message) {
-    	}
-
-	    @Override
-    	public void onPointerCaptureChanged(boolean hasCapture) {
-    	}
 
 
 
