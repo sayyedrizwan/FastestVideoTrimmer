@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/recordvideo"
+        android:padding="70dp"
+        android:background="@drawable/roundcorner"
+        android:layout_margin="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/black"
+            android:text="Record Video" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/recordvideo"
+        android:id="@+id/selectvideo"
+        android:padding="70dp"
+        android:background="@drawable/roundcorner"
+        android:layout_margin="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/black"
+            android:text="Select Video" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

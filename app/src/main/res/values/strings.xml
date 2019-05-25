@@ -1,0 +1,14 @@
+<resources>
+
+    <string name="app_name">Fastest Video Trimmer</string>
+
+
+    <string-array name="menu">
+
+        <item>Play In FVT player</item>
+        <item>Play In Your player</item>
+
+
+    </string-array>
+
+</resources>
