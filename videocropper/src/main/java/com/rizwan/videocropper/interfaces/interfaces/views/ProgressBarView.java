@@ -32,6 +32,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
+
 import com.rizwan.videocropper.R;
 import com.rizwan.videocropper.interfaces.interfaces.interfaces.OnProgressVideoListener;
 import com.rizwan.videocropper.interfaces.interfaces.interfaces.OnRangeSeekBarListener;

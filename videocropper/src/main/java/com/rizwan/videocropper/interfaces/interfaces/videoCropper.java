@@ -45,6 +45,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+
 import com.rizwan.videocropper.R;
 import com.rizwan.videocropper.interfaces.interfaces.interfaces.OnCropVideoListener;
 import com.rizwan.videocropper.interfaces.interfaces.interfaces.OnProgressVideoListener;
@@ -246,7 +247,7 @@ public class videoCropper extends FrameLayout {
         int marge = mRangeSeekBarView.getThumbs().get(0).getWidthBitmap();
         int widthSeek = 0;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-            widthSeek = mHolderTopView.getThumb().getMinimumWidth() / 2;
+            widthSeek = mHolderTopView.getThumb().getMinimumWidth();
         }
 
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) mHolderTopView.getLayoutParams();
@@ -263,46 +264,47 @@ public class videoCropper extends FrameLayout {
     }
 
     private void onSaveClicked() {
-        if (mStartPosition <= 0 && mEndPosition >= mDuration) {
+      /*  if (mStartPosition <= 0 && mEndPosition >= mDuration) {
             if (mOnTrimVideoListener != null)
                 mOnTrimVideoListener.getResult(mSrc);
         } else {
-            mPlayView.setVisibility(View.VISIBLE);
-            mVideoView.pause();
+        */
+        mPlayView.setVisibility(View.VISIBLE);
+        mVideoView.pause();
 
-            MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
-            mediaMetadataRetriever.setDataSource(getContext(), mSrc);
-            long METADATA_KEY_DURATION = Long.parseLong(mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+        MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
+        mediaMetadataRetriever.setDataSource(getContext(), mSrc);
+        long METADATA_KEY_DURATION = Long.parseLong(mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
 
-            final File file = new File(mSrc.getPath());
+        final File file = new File(mSrc.getPath());
 
-            if (mTimeVideo < MIN_TIME_FRAME) {
+        if (mTimeVideo < MIN_TIME_FRAME) {
 
-                if ((METADATA_KEY_DURATION - mEndPosition) > (MIN_TIME_FRAME - mTimeVideo)) {
-                    mEndPosition += (MIN_TIME_FRAME - mTimeVideo);
-                } else if (mStartPosition > (MIN_TIME_FRAME - mTimeVideo)) {
-                    mStartPosition -= (MIN_TIME_FRAME - mTimeVideo);
-                }
+            if ((METADATA_KEY_DURATION - mEndPosition) > (MIN_TIME_FRAME - mTimeVideo)) {
+                mEndPosition += (MIN_TIME_FRAME - mTimeVideo);
+            } else if (mStartPosition > (MIN_TIME_FRAME - mTimeVideo)) {
+                mStartPosition -= (MIN_TIME_FRAME / 2 - mTimeVideo);
             }
+        }
 
-            //notify that video trimming started
-            if (mOnTrimVideoListener != null)
-                mOnTrimVideoListener.onTrimStarted();
+        //notify that video trimming started
+        if (mOnTrimVideoListener != null)
+            mOnTrimVideoListener.onTrimStarted();
 
-            BackgroundExecutor.execute(
-                    new BackgroundExecutor.Task("", 0L, "") {
-                        @Override
-                        public void execute() {
-                            try {
-                                TrimVideoUtils.startTrim(file, getDestinationPath(), mStartPosition, mEndPosition, mOnTrimVideoListener);
-                            } catch (final Throwable e) {
-                                Thread.getDefaultUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), e);
-                            }
+        BackgroundExecutor.execute(
+                new BackgroundExecutor.Task("", 0L, "") {
+                    @Override
+                    public void execute() {
+                        try {
+                            TrimVideoUtils.startTrim(file, getDestinationPath(), mStartPosition, mEndPosition, mOnTrimVideoListener);
+                        } catch (final Throwable e) {
+                            Thread.getDefaultUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), e);
                         }
                     }
-            );
-        }
+                }
+        );
     }
+    // }
 
     private void onClickVideoPlayPause() {
         if (mVideoView.isPlaying()) {
@@ -402,6 +404,7 @@ public class videoCropper extends FrameLayout {
 
         setTimeFrames();
         setTimeVideo(0);
+
 
         if (mOnCropVideoListener != null) {
             mOnCropVideoListener.onVideoPrepared();

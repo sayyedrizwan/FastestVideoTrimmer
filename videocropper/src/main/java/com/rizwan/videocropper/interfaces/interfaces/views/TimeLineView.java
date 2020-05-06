@@ -33,7 +33,6 @@ import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.LongSparseArray;
 import android.view.View;
-
 import com.rizwan.videocropper.R;
 import com.rizwan.videocropper.interfaces.interfaces.utils.BackgroundExecutor;
 import com.rizwan.videocropper.interfaces.interfaces.utils.UiThreadExecutor;
@@ -84,7 +83,7 @@ public class TimeLineView extends View {
                                        public void execute() {
                                            try {
                                                LongSparseArray<Bitmap> thumbnailList = null;
-                                               if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                                               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                                                    thumbnailList = new LongSparseArray<>();
                                                }
 
