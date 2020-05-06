@@ -1,18 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 group='FastestVideoTrimmer.github'
-<<<<<<< HEAD
 version = '2.3'
 
 android {
     compileSdkVersion 29
-=======
-version = '2.2'
-
-android {
-    compileSdkVersion 29
-
->>>>>>> c6ef2a825827cf5224bd6c962594e9e3788fa586
 
     defaultConfig {
         minSdkVersion 14
@@ -42,7 +34,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.googlecode.mp4parser:isoparser:1.1.22'
-
-
 
 }
